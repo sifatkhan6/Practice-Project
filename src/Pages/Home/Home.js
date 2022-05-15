@@ -4,7 +4,7 @@ import Appointment from './Appointment';
 import Banner from './Banner';
 import Contact from './Contact';
 import Exceptional from './Exceptional';
-import Footer from './Footer';
+import Footer from '../Shared/Footer';
 import Services from './Services';
 import Testimonial from './Testimonial';
 

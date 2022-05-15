@@ -5,9 +5,9 @@ const Navbar = () => {
 
     const menuItems = <>
         <li className='text-lg'><Link to={'/home'}>Home</Link></li>
-        <li className='text-lg'><Link to={'/about'}>About</Link></li>
         <li className='text-lg'><Link to={'/appointment'}>Appointment</Link></li>
         <li className='text-lg'><Link to={'/reviews'}>Reviews</Link></li>
+        <li className='text-lg'><Link to={'/about'}>About</Link></li>
         <li className='text-lg'><Link to={'/contact'}>Contact Us</Link></li>
         <li className='text-lg'><Link to={'/login'}>Login</Link></li>
     </>
