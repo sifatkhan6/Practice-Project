@@ -6,19 +6,23 @@ import auth from '../../../firebase.init';
 
 const Navbar = () => {
 
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
 
     const logout = () => {
         signOut(auth);
-      };
+        localStorage.removeItem('accessToken');
+    };
 
     const menuItems = <>
         <li className='text-lg'><Link to={'/home'}>Home</Link></li>
         <li className='text-lg'><Link to={'/appointment'}>Appointment</Link></li>
+        {
+            user && <li className='text-lg'><Link to={'/dashboard'}>Dashboard</Link></li>
+        }
         <li className='text-lg'><Link to={'/reviews'}>Reviews</Link></li>
         <li className='text-lg'><Link to={'/about'}>About</Link></li>
         <li className='text-lg'><Link to={'/contact'}>Contact Us</Link></li>
-        <li className='text-lg'>{user ? <button onClick={logout}>Sign Out</button> :<Link to={'/login'}>Login</Link>}</li>
+        <li className='text-lg'>{user ? <button onClick={logout}>Sign Out</button> : <Link to={'/login'}>Login</Link>}</li>
     </>
 
     return (
@@ -32,12 +36,17 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-2xl">Doctors Portal</a>
+                <Link to='/home' className="btn btn-ghost normal-case text-2xl">Doctors Portal</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
                 </ul>
+            </div>
+            <div className="navbar-end">
+                <label tabIndex="1" htmlFor="my-drawer-2" className="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
             </div>
         </div>
     );
